@@ -1,0 +1,16 @@
+version: '3.8'
+
+networks:
+  backend:
+    driver: ${NETWORKS_DRIVER}
+services:
+  php:
+    build:
+      context: ./docker
+    container_name: php
+    expose:
+      - "9000"
+    volumes:
+      - ./application:/var/www/html
+    networks:
+      - backend
